@@ -1,7 +1,7 @@
 """
 Configuration management for AI Lead Enrichment
 """
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from functools import lru_cache
 
 
@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     """Application settings loaded from environment variables"""
 
     # API Keys
-    ANTHROPIC_API_KEY: str
+    GEMINI_API_KEY: str
 
     # Database
     POSTGRES_USER: str = "enrichment_user"
@@ -27,9 +27,10 @@ class Settings(BaseSettings):
     API_PORT: int = 8000
     DEBUG: bool = True
 
-    class Config:
-        env_file = ".env"
-        case_sensitive = True
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        case_sensitive=True
+    )
 
 
 @lru_cache()

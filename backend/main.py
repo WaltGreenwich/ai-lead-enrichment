@@ -76,7 +76,7 @@ async def enrich_company(company: CompanyInput):
 
     Process:
     1. Web scraping (if domain provided)
-    2. AI analysis with Claude
+    2. AI analysis with Gemini
     3. Generate embeddings
     4. Store in vector database
     """
